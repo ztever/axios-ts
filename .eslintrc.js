@@ -15,8 +15,13 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
+    "prettier/prettier": "error",
     "@typescript-eslint/no-var-requires": 0,
     "no-mixed-requires": 0,
     "@typescript-eslint/no-explicit-any": "off",
+    "arrow-parens": "off",
+    "arrow-body-style": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    // "comma-dangle": [2, "only-multiline"],
   },
 };
