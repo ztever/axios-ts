@@ -9,13 +9,14 @@ const router = require("./router");
 const app = express();
 const path = require("path");
 const compiler = webpack(webpackConfig);
+const multipart = require("connect-multiparty");
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: "/dist/",
     stats: {
       colors: true,
-      chunks: false,
-    },
+      chunks: false
+    }
   })
 );
 
@@ -24,6 +25,7 @@ app.use(express.static(path.resolve(__dirname)));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(multipart());
 app.use(router);
 
 const port = process.env.PORT || 3000;

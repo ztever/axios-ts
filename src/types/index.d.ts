@@ -13,11 +13,21 @@ export type MethodOptions =
   | "OPTIONS"
   | "patch"
   | "PATCH";
-export interface ConfigOptions {
+export interface AxiosRequestConfig {
   url: string;
   method?: MethodOptions;
   data?: any;
   params?: unknown;
   headers?: any;
   timeout?: any;
+  responseType?: XMLHttpRequestResponseType;
 }
+export interface AxiosResponse {
+  data: any;
+  status: number;
+  statusText: string;
+  headers: any;
+  config: AxiosRequestConfig;
+  request: any;
+}
+export type AxiosPromise = Promise<AxiosResponse>;

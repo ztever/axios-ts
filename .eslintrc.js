@@ -1,17 +1,17 @@
 module.exports = {
   env: {
     browser: true,
-    es2020: true,
+    es2020: true
   },
   extends: [
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 11,
-    sourceType: "module",
+    sourceType: "module"
   },
   plugins: ["@typescript-eslint"],
   rules: {
@@ -22,6 +22,6 @@ module.exports = {
     "arrow-parens": "off",
     "arrow-body-style": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    // "comma-dangle": [2, "only-multiline"],
-  },
+    "prefer-const": ["error", { destructuring: "all" }]
+  }
 };
