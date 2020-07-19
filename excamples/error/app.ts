@@ -1,4 +1,4 @@
-import Axios from "../../src/index";
+import Axios, { AxiosError } from "../../src/index";
 Axios({
   url: "/get/error",
   method: "get",
@@ -39,6 +39,6 @@ Axios({
   .then(res => {
     console.log("res from data==>", res);
   })
-  .catch(error => {
+  .catch((error: AxiosError) => {
     console.log("timeout error", error);
   });

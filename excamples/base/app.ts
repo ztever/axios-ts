@@ -76,7 +76,7 @@ Axios({
     a: 1,
     b: 2
   }
-}).then((res) => {
+}).then(res => {
   console.log("res-->", res);
 });
 Axios({
@@ -91,7 +91,7 @@ Axios({
     a: 1,
     b: 2
   }
-}).then((res) => {
+}).then(res => {
   console.log("res--->", res);
 });
 const data = new FormData();
@@ -100,7 +100,7 @@ Axios({
   url: "/post/base",
   method: "post",
   data
-}).then((res) => {
+}).then(res => {
   console.log("res from data==>", res);
 });
 

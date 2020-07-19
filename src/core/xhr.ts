@@ -5,11 +5,12 @@ import {
 } from "../types/index.d";
 import { parseHeaders } from "../helper/headers";
 import { transfromResponseData } from "../helper/data";
+import { createError } from "../helper/error";
 const xhr = (config: AxiosRequestConfig): AxiosPromise => {
   return new Promise((resolve, reject) => {
     const {
       data = null,
-      url,
+      url = "",
       method = "get",
       headers,
       responseType,
@@ -28,7 +29,13 @@ const xhr = (config: AxiosRequestConfig): AxiosPromise => {
         resolve(response);
       } else {
         reject(
-          new Error("Requrest failed with status code " + response.status)
+          createError(
+            "Requrest failed with status code " + response.status,
+            config,
+            null,
+            request,
+            response
+          )
         );
       }
     }
@@ -50,10 +57,17 @@ const xhr = (config: AxiosRequestConfig): AxiosPromise => {
       handleResponse(response);
     };
     request.onerror = function () {
-      reject(new Error("Network Error"));
+      reject(createError("Network Error", config, null, request));
     };
     request.ontimeout = function () {
-      reject(new Error(`Timeout of ${timeout}ms exceeded`));
+      reject(
+        createError(
+          `Timeout of ${timeout}ms exceeded`,
+          config,
+          "ECONNABORTED",
+          request
+        )
+      );
     };
     Object.keys(headers).forEach(name => {
       if (data === null && name.toLowerCase() === "content-type") {

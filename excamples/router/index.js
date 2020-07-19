@@ -30,5 +30,20 @@ router.post("/post/base/buffer", (req, res) => {
     res.json(buf.toJSON());
   });
 });
+router.get("/generics/user", (req, res) => {
+  res.json({
+    name: "zt",
+    age: 12
+  });
+});
+router.get("/interface/get", (req, res) => {
+  res.json(req.query);
+});
+router.post("/interface/post", (req, res) => {
+  res.json(req.body);
+});
+router.post("/interface/request", (req, res) => {
+  res.json(req.body);
+});
 
 module.exports = router;

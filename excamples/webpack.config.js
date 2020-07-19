@@ -1,5 +1,5 @@
 const path = require("path");
-const resolve = (dir) => path.join(__dirname, dir);
+const resolve = dir => path.join(__dirname, dir);
 // const HtmlWebpackPlugin = require("html-webpack-plugin"); // 实现 文件的自动打包和引入
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].bundle.js",
-    publicPath: "/dist/",
+    publicPath: "/dist/"
   },
   mode: "development",
   plugins: [
@@ -32,14 +32,14 @@ module.exports = {
     // }),
     new webpack.HotModuleReplacementPlugin(), // 热更新所需插件
     new webpack.NamedModulesPlugin(), // 热更新所需插件
-    new CleanWebpackPlugin({ dry: true }), // 清除缓存中上一次打包的不用的文件
+    new CleanWebpackPlugin({ dry: true }) // 清除缓存中上一次打包的不用的文件
   ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     // 设置别名
     alias: {
-      "@": resolve("src"), // 这样配置后 @ 可以指向 src 目录
-    },
+      "@": resolve("src") // 这样配置后 @ 可以指向 src 目录
+    }
   },
   module: {
     rules: [
@@ -47,13 +47,13 @@ module.exports = {
         test: /\.ts$/,
         enforce: "pre",
         use: "tslint-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
+        exclude: /node_modules/
+      }
+    ]
+  }
 };
