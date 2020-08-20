@@ -1,11 +1,13 @@
-import { AxiosInstance } from "./types/index.d";
+import { AxiosInstance, AxiosRequestConfig } from "./types/index.d";
 import Axios from "./core/axios";
 import { extend } from "./helper/util";
-function getAxios(): AxiosInstance {
-  const context = new Axios();
+import defaults from "./core/defaults";
+
+function getAxios(config: AxiosRequestConfig): AxiosInstance {
+  const context = new Axios(config);
   const axios = Axios.prototype.request.bind(context);
   extend(axios, context);
   return axios as AxiosInstance;
 }
 
-export default getAxios();
+export default getAxios(defaults);

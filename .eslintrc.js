@@ -22,6 +22,7 @@ module.exports = {
     "arrow-parens": "off",
     "arrow-body-style": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "prefer-const": ["error", { destructuring: "all" }]
+    "prefer-const": ["error", { destructuring: "all" }],
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 };

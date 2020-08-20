@@ -16,12 +16,14 @@ type MethodOptions =
 
 export interface AxiosRequestConfig {
   url?: string;
+  baseUrl?: string;
   method?: MethodOptions;
   data?: any;
   params?: unknown;
   headers?: any;
   timeout?: any;
   responseType?: XMLHttpRequestResponseType;
+  [propName: string]: any;
 }
 export interface AxiosResponse<T = any> {
   data: T;
@@ -42,6 +44,7 @@ export interface AxiosError<T = any> extends Error {
 }
 
 export interface Axios {
+  defaults: AxiosRequestConfig;
   interceptors: {
     request: AxiosInterceptorManager<AxiosRequestConfig>;
     response: AxiosInterceptorManager<AxiosResponse>;

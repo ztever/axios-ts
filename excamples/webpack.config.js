@@ -28,7 +28,7 @@ module.exports = {
     // 配置插件
     // new HtmlWebpackPlugin({
     //   template: "./excamples/index.html", // 指定模板 html 文件
-    //   filename: "index.html", // 输出的 HTML 文件名称
+    //   filename: "index.html" // 输出的 HTML 文件名称
     // }),
     new webpack.HotModuleReplacementPlugin(), // 热更新所需插件
     new webpack.NamedModulesPlugin(), // 热更新所需插件

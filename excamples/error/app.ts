@@ -40,5 +40,5 @@ Axios({
     console.log("res from data==>", res);
   })
   .catch((error: AxiosError) => {
-    console.log("timeout error", error);
+    console.log("timeout error", error, error.config);
   });
